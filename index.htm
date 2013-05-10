@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>log1k - test</title>
+<style>
+  #rsts:invalid {
+    border: 2px solid #ff0000;
+  }
+  #qso_input:before
+    {
+     	content: '';
+     	position: absolute;
+     	z-index: -1;
+     	border: 1px dashed #ccc;
+     	top: 5px;
+     	bottom: 5px;
+     	left: 5px;
+     	right: 5px;
+     	-moz-box-shadow: 0 0 0 1px #fff;
+     	-webkit-box-shadow: 0 0 0 1px #fff;
+     	box-shadow: 0 0 0 1px #fff;
+    }
+ </style>
+ <script type="text/javascript" src="jquery-1.9.1.js"></script>
+ <script type="text/javascript">
+  $(document).ready( function() {
+    $('#date').val(new Date().toJSON().slice(0,10));
+    $('#time').val(new Date().toJSON().slice(11,16));
+    setInterval( function() {
+      $('#ctime').html( new Date().toJSON().slice(0,19));
+      }, 1000);
+    });
+ </script>
+</head>
+
+<body>
+  <form id="qso_input">
+    <h2>QSO</h2>
+      <fieldset id="inputs">
+        <div id="ctime"></div>
+        <input id="date" type="hidden" requiered>
+        <input id="time" type="hidden" requiered>
+        <input id="call" title="Call" type="text" autofocus requiered>
+        <input id="rsts" title="Sent RST" type="text" requiered pattern="[1-5][1-9]{1,2}"
+        value=59 maxlength="3" size=2>
+        <input id="rstr" title="Received RST" type="text" requiered pattern="[1-5][1-9]{1,2}"
+        value=59 maxlength="3" size=2>
+        <label for="name">Name:</label>
+        <input id="name" title="Name" type="text">
+        <label for="qth">QTH:</label>
+        <input id="qth" title="QTH" type="text">
+        <label for="comment">Comment:</label>
+        <input id="comment" title="Comment" type="text">
+      </fieldset>
+  </form>
+</body>
+
+</html>
+
